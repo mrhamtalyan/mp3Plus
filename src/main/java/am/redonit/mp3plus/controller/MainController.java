@@ -85,21 +85,21 @@ public class MainController {
         IOUtils.copy(in, response.getOutputStream());
     }
 
-//    @GetMapping("/admin")
-//    public String postPage(ModelMap map) {
-//        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        map.addAttribute("currentUser", principal);
-//        map.addAttribute("users", userRepository.findAll());
-//        map.addAttribute("musics", musicRepository.findAll());
-//        map.addAttribute("albums", albumRepository.findAll());
-//        map.addAttribute("genres", musicGenreRepository.findAll());
-//        map.addAttribute("artists", artistRepository.findAll());
-//        map.addAttribute("user", new User());
-//        map.addAttribute("music", new Music());
-//        map.addAttribute("album", new Album());
-//        map.addAttribute("genre", new Genre());
-//        map.addAttribute("artist", new Artist());
-//        return "admin";
-//    }
+    @GetMapping("/admin")
+    public String postPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", musicGenreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        return "admin";
+    }
 
 }
