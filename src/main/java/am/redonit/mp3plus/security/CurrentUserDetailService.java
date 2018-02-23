@@ -1,7 +1,7 @@
 package am.redonit.mp3plus.security;
 
-import com.worldmusic.worldmusic.model.User;
-import com.worldmusic.worldmusic.repository.UserRepository;
+import am.redonit.mp3plus.model.User;
+import am.redonit.mp3plus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
