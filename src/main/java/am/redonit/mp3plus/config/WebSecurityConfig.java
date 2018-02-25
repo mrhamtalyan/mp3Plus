@@ -23,12 +23,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().
-                authorizeRequests()
-                .antMatchers("/admin").hasAuthority("ADMIN")
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
-              .permitAll();
+                .loginPage("/loginPage")
+                .usernameParameter("j_email")
+                .passwordParameter("j_password")
+                .defaultSuccessUrl("/loginSuccess")
+//                .failureUrl("/login?error")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+
+;
+
     }
 
     @Autowired
