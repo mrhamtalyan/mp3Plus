@@ -1,11 +1,13 @@
-<!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<!--[if lt IE 7]>
-<html class="no-js ie6 oldie" lang=en><![endif]--> <!--[if IE 7]>
-<html class="no-js ie7 oldie" lang=en><![endif]--> <!--[if IE 8]>
-<html class="no-js ie8 oldie" lang=en><![endif]--> <!--[if gt IE 8]><!-->
-<html class=no-js lang=en> <!--<![endif]-->
+<html class="no-js ie6 oldie" lang=en>
+<html class="no-js ie7 oldie" lang=en>
+<html class="no-js ie8 oldie" lang=en>
+<html class=no-js lang=en> 
 <head>
     <meta charset=utf-8>
     <link rel=dns-prefetch href="http://fonts.googleapis.com/">
@@ -15,14 +17,14 @@
     <meta name=description content="">
     <meta name=author content="">
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <link rel=stylesheet href='/adminpamel/css/c11f8f1b6c157a7a1ee04039d038c282336416b9.css'>
+    <link rel=stylesheet href='/adminpanel/css/c11f8f1b6c157a7a1ee04039d038c282336416b9.css'>
     <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel=stylesheet type="text/css">
-    <script src="js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="/adminpanel/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 <body id=top>
 <div id=container>
     <div id=header-surround>
-        <header id=header><img src="img/logo.png" alt=Grape class=logo>
+        <header id=header><img src="/adminpanel/img/logo.png" alt=Grape class=logo>
             <div class="divider-header divider-vertical"></div>
             <a href="javascript:void(0);" onclick="$('#info-dialog').dialog({ modal: true });">
                 <span class=btn-info></span></a>
@@ -41,7 +43,7 @@
                         <div class=block-border>
                             <div class="block-header small"><h1>Create a User</h1></div>
                             <form id=create-user-form class="block-content form" 
-                                  action="dashboard.html" method=post>
+                                  action="dashboard.jsp" method=post>
                                 <div class=_100><p><label for=username>Username</label><input 
                                         id=username name=username
                                                                                               
@@ -79,7 +81,7 @@
                         <div class=block-border>
                             <div class="block-header small"><h1>Write a Message</h1></div>
                             <form id=write-message-form class="block-content form" 
-                                  action="dashboard.html" method=post>
+                                  action="dashboard.jsp" method=post>
                                 <p class=inline-mini-label><label 
                                         for=recipient>Recipient</label> <input type=text name=recipient class=required>
                                 </p>
@@ -112,7 +114,7 @@
                         <div class=block-border>
                             <div class="block-header small"><h1>Create a Folder</h1></div>
                             <form id=create-folder-form class="block-content form" 
-                                  action="dashboard.html" method=post>
+                                  action="dashboard.jsp" method=post>
                                 <p class=inline-mini-label><label for=folder-name>Name</label>
                                     <input type=text name=folder-name class=required>
                                 </p>
@@ -134,7 +136,7 @@
             </ul>
             <div id=user-info><p><span class=messages>Hello <a href="javascript:void(0);
 ">Administrator</a> ( <a
-                    href="javascript:void(0);"><img src="img/icons/packs/fugue/16x16/mail.png"
+                    href="javascript:void(0);"><img src="/adminpanel/img/icons/packs/fugue/16x16/mail.png"
                                                     alt=Messages> 3 new messages</a> )</span>
                 <a href="javascript:void(0)" class="toolbox-action button">Settings</a> <a 
                         href="javascript:void(0);"
@@ -152,59 +154,59 @@
                   method=post><input type=text id=query name=query value="" autocomplete=off 
                                      placeholder=Search></form>
         </div>
-        <section id=login-details><img class="img-left framed" src="img/misc/avatar_small.png"
+        <section id=login-details><img class="img-left framed" src="/adminpanel/img/misc/avatar_small.png"
                                        alt="Hello Admin">
             <h3>Logged in as</h3>
             <h2><a class=user-button href="javascript:void(0);">Administrator&nbsp;<span
                     class=arrow-link-down></span></a></h2>
             <ul class=dropdown-username-menu>
-                <li><a href="dashboard.html#">Profile</a></li>
-                <li><a href="dashboard.html#">Settings</a></li>
-                <li><a href="dashboard.html#">Messages</a></li>
-                <li><a href="dashboard.html#">Logout</a></li>
+                <li><a href="dashboard.jsp#">Profile</a></li>
+                <li><a href="dashboard.jsp#">Settings</a></li>
+                <li><a href="dashboard.jsp#">Messages</a></li>
+                <li><a href="dashboard.jsp#">Logout</a></li>
             </ul>
             <div class=clearfix></div>
         </section>
         <nav id=nav>
             <ul class="menu collapsible shadow-bottom">
-                <li><a href="dashboard.html" class=current><img 
-                        src="img/icons/packs/fugue/16x16/dashboard.png">Dashboard<span
+                <li><a href="dashboard.jsp" class=current><img
+                        src="/adminpanel/img/icons/packs/fugue/16x16/dashboard.png">Dashboard<span
                         class=badge>2</span></a></li>
                 <li><a href="forms.html"><img 
-                        src="img/icons/packs/fugue/16x16/application-form.png">Forms</a></li>
-                <li><a href="table.html"><img src="img/icons/packs/fugue/16x16/table
+                        src="/adminpanel/img/icons/packs/fugue/16x16/application-form.png">Forms</a></li>
+                <li><a href="table.jsp"><img src="/adminpanel/img/icons/packs/fugue/16x16/table
                 .png">Table</a></li>
-                <li><a href="charts.html"><img src="img/icons/packs/fugue/16x16/chart
+                <li><a href="charts.html"><img src="/adminpanel/img/icons/packs/fugue/16x16/chart
                 .png">Charts</a></li>
                 <li><a href="javascript:void(0);"><img 
-                        src="img/icons/packs/fugue/16x16/clipboard-list.png">Lists<span
+                        src="/adminpanel/img/icons/packs/fugue/16x16/clipboard-list.png">Lists<span
                         class="badge grey">3</span></a>
                     <ul class=sub>
-                        <li><a href="list_block.html">Block Lists</a></li>
-                        <li><a href="list_shortcut.html">Shortcut List</a></li>
-                        <li><a href="list_contact.html">Contact List</a></li>
+                        <li><a href="list_block.jsp">Block Lists</a></li>
+                        <li><a href="list_shortcut.jsp">Shortcut List</a></li>
+                        <li><a href="list_contact.jsp">Contact List</a></li>
                     </ul>
                 </li>
-                <li><a href="tabs.html"><img src="img/icons/packs/fugue/16x16/ui-tab-content
+                <li><a href="tabs.jsp"><img src="/adminpanel/img/icons/packs/fugue/16x16/ui-tab-content
                 .png">Tabs</a></li>
-                <li><a href="notifications.html"><img 
-                        src="img/icons/packs/fugue/16x16/application--exclamation
+                <li><a href="notifications.jsp"><img
+                        src="/adminpanel/img/icons/packs/fugue/16x16/application--exclamation
                         .png">Notifications</a>
                 </li>
                 <li><a href="alert_boxes.html"><img 
-                        src="img/icons/packs/fugue/16x16/balloons-box.png">Alert Boxes</a>
+                        src="/adminpanel/img/icons/packs/fugue/16x16/balloons-box.png">Alert Boxes</a>
                 </li>
-                <li><a href="tooltips.html"><img 
-                        src="img/icons/packs/fugue/16x16/ui-tooltip-balloon.png">Tooltips</a>
+                <li><a href="tooltips.jsp"><img
+                        src="/adminpanel/img/icons/packs/fugue/16x16/ui-tooltip-balloon.png">Tooltips</a>
                 </li>
                 <li><a href="404.jsp"><img 
-                        src="img/icons/packs/fugue/16x16/magnifier--exclamation
+                        src="/adminpanel/img/icons/packs/fugue/16x16/magnifier--exclamation
                         .png">Error-Page (404)</a>
                 </li>
-                <li><a href="login.html"><img src="img/icons/packs/fugue/16x16/door-open-in
+                <li><a href="login.html"><img src="/adminpanel/img/icons/packs/fugue/16x16/door-open-in
                 .png">Login</a></li>
                 <li><a href="javascript:void(0);"><img 
-                        src="img/icons/packs/fugue/16x16/user-white.png">Example
+                        src="/adminpanel/img/icons/packs/fugue/16x16/user-white.png">Example
                     Submenu<span class="badge red">42</span></a>
                     <ul class=sub>
                         <li><a href="javascript:void(0);">Lorem ipsum #1</a></li>
@@ -213,7 +215,7 @@
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);"><img 
-                        src="img/icons/packs/fugue/16x16/newspaper.png">Another
+                        src="/adminpanel/img/icons/packs/fugue/16x16/newspaper.png">Another
                     Submenu</a>
                     <ul class=sub>
                         <li><a href="javascript:void(0);">Lorem ipsum</a></li>
@@ -229,7 +231,7 @@
     <div id=main role=main>
         <div id=title-bar>
             <ul id=breadcrumbs>
-                <li><a href="dashboard.html" title=Home><span id=bc-home></span></a></li>
+                <li><a href="dashboard.jsp" title=Home><span id=bc-home></span></a></li>
                 <li class=no-hover>Dashboard</li>
             </ul>
         </div>
@@ -249,30 +251,30 @@
                         <div class=block-content>
                             <ul class=shortcut-list>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/kedit.png"> 
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/kedit.png"> 
                                     Write an Article </a></li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/penguin.png"> 
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/penguin.png"> 
                                     User Manager </a></li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/wifi.png"> 
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/wifi.png"> 
                                     Control Monitor </a></li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/mailreminder
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/mailreminder
                                         .png"> Check the Mails </a>
                                 </li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/Volume&#32;
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/Volume&#32;
                                         Manager.png"> Statistics </a>
                                 </li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/terminal.png">
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/terminal.png">
                                     Manage Console </a></li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/knotes.png"> 
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/knotes.png"> 
                                     Notes </a></li>
                                 <li><a href="javascript:void(0);"> <img
-                                        src="img/icons/packs/crystal/48x48/apps/kview.png"> 
+                                        src="/adminpanel/img/icons/packs/crystal/48x48/apps/kview.png"> 
                                     Manage Images </a></li>
                             </ul>
                             <div class=clear></div>
@@ -282,7 +284,7 @@
                 <div class=grid_4>
                     <div class=block-border>
                         <div class=block-header><h1>Create a Blogpost</h1><span></span></div>
-             <form id=validate-form class="block-content form" action="dashboard.html" 
+             <form id=validate-form class="block-content form" action="dashboard.jsp"
                    method=post><p
                                 class=inline-mini-label><label for=title>Title</label> <input 
                                 type=text name=title
@@ -327,7 +329,7 @@
                             </ul>
                         </div>
                         <div class="block-content dark-bg"><p>Visit the 
-                            <a href="list_block.html">Block List</a> page to
+                            <a href="list_block.jsp">Block List</a> page to
                             see the other types of block lists.</p></div>
                     </div>
                 </div>
@@ -363,8 +365,8 @@
     </footer>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');</script>
-<script defer src='js/8f71c247c4dadc837fe569208a7a1dc0f7625c46.js'></script>
+<script>window.jQuery || document.write('<script src="/adminpanel/js/libs/jquery-1.6.2.min.js"><\/script>');</script>
+<script defer src='/adminpanel/js/8f71c247c4dadc837fe569208a7a1dc0f7625c46.js'></script>
 <!--[if lt IE 7 ]>
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 <script>window.attachEvent("onload", function () {

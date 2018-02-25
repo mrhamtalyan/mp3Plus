@@ -16,18 +16,18 @@
     <meta name=description content="">
     <meta name=author content="">
     <meta name=viewport content="width=device-width,initial-scale=1">
-    <link rel=stylesheet href='css/c11f8f1b6c157a7a1ee04039d038c282336416b9.css'>
+    <link rel=stylesheet href='/adminpanel/css/c11f8f1b6c157a7a1ee04039d038c282336416b9.css'>
     <link href="http://fonts.googleapis.com/css?family=PT+Sans" rel=stylesheet type="text/css">
-    <script src="/adminpamel/js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="/adminpanel/js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 <body class=special-page>
 <div id=container>
     <section id=error-number><h1>404</h1></section>
-    <section id=error-text><p><a class=button href="dashboard.html">&laquo; Back to Dashboard</a></p></section>
+    <section id=error-text><p><a class=button href="dashboard.jsp">&laquo; Back to Dashboard</a></p></section>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/adminpamel/js/libs/jquery-1.6.2.min.js"><\/script>');</script>
-<script defer src='/adminpamel/js/8f71c247c4dadc837fe569208a7a1dc0f7625c46.js'></script>
+<script>window.jQuery || document.write('<script src="/adminpanel/js/libs/jquery-1.6.2.min.js"><\/script>');</script>
+<script defer src='/adminpanel/js/8f71c247c4dadc837fe569208a7a1dc0f7625c46.js'></script>
 
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
 <script>window.attachEvent("onload", function () {
