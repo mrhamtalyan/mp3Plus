@@ -19,5 +19,7 @@ public class Album {
     private int id;
     @Column
     private String name;
+    @Column(name = "album_img")
+    private String albumImg;
 
 }

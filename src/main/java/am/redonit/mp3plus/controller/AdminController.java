@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -27,9 +29,11 @@ public class AdminController {
     @Autowired
     private AlbumRepository albumRepository;
     @Autowired
-    private MusicGenreRepository musicGenreRepository;
+    private GenreRepository genreRepository;
     @Autowired
     private ArtistRepository artistRepository;
+    @Autowired
+    private NewsRepository newsRepository;
     @Value("${worldmusic.product.upload.path}")
     private String imageUploadPath;
 
@@ -40,39 +44,118 @@ public class AdminController {
         map.addAttribute("users", userRepository.findAll());
         map.addAttribute("musics", musicRepository.findAll());
         map.addAttribute("albums", albumRepository.findAll());
-        map.addAttribute("genres", musicGenreRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
         map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
         map.addAttribute("user", new User());
         map.addAttribute("music", new Music());
         map.addAttribute("album", new Album());
         map.addAttribute("genre", new Genre());
         map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
         return "admin";
     }
 
-    @GetMapping(value = "/addGenre")
-    public String saveGenre(@ModelAttribute("genre") Genre genre) {
-        musicGenreRepository.save(genre);
-        return "redirect:/admin";
+
+    //    --ADD GENRE--
+    @GetMapping("/addGenre")
+    public String genrePage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "addGenre";
     }
 
-    @PostMapping(value = "/addArtist")
+    @GetMapping(value = "/saveGenre")
+    public String saveGenre(@ModelAttribute("genre") Genre genre) {
+        genreRepository.save(genre);
+        return "redirect:/addGenre";
+    }
+//    --END ADD GENRE--
+// --ADD ARTIST--
+@GetMapping("/addArtist")
+public String addArtistPage(ModelMap map) {
+    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    map.addAttribute("currentUser", principal);
+    map.addAttribute("artists", artistRepository.findAll());
+    map.addAttribute("", artistRepository.findAll());
+    List<Gender> genders= Arrays.asList(Gender.values());
+    map.addAttribute("genders",genders);
+    map.addAttribute("artist", new Artist());
+    return "addArtist";
+}
+    @PostMapping(value = "/saveArtist")
     public String saveArtist(@Valid @ModelAttribute("artist") Artist artist, @RequestParam("image") MultipartFile multipartFile) throws IOException {
         String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
         File file = new File(imageUploadPath + picName);
         multipartFile.transferTo(file);
         artist.setPhoto(picName);
         artistRepository.save(artist);
-        return "redirect:/admin";
+        return "redirect:/addArtist";
+    }
+// --END ADD ARTIST
+    // --ADD ALBUM--
+    @GetMapping("/addAlbum")
+    public String albumPage(ModelMap map) {
+        CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        map.addAttribute("currentUser", principal);
+        map.addAttribute("users", userRepository.findAll());
+        map.addAttribute("musics", musicRepository.findAll());
+        map.addAttribute("albums", albumRepository.findAll());
+        map.addAttribute("genres", genreRepository.findAll());
+        map.addAttribute("artists", artistRepository.findAll());
+        map.addAttribute("newsis", newsRepository.findAll());
+        map.addAttribute("user", new User());
+        map.addAttribute("music", new Music());
+        map.addAttribute("album", new Album());
+        map.addAttribute("genre", new Genre());
+        map.addAttribute("artist", new Artist());
+        map.addAttribute("news", new News());
+        return "addAlbum";
     }
 
-    @PostMapping(value = "/addAlbum")
-    public String saveAlbum(@ModelAttribute("album") Album album) {
+    @PostMapping(value = "/saveAlbum")
+    public String saveAlbum(@Valid @ModelAttribute("album") Album album, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
+        File file = new File(imageUploadPath + picName);
+        multipartFile.transferTo(file);
+        album.setAlbumImg(picName);
         albumRepository.save(album);
-        return "redirect:/admin";
+        return "redirect:/addAlbum";
     }
+// --END ADD ALBUM--
+//     --ADD MUSIC--
+@GetMapping("/addMusic")
+public String addMusicPage(ModelMap map) {
+    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    map.addAttribute("currentUser", principal);
+    map.addAttribute("users", userRepository.findAll());
+    map.addAttribute("musics", musicRepository.findAll());
+    map.addAttribute("albums", albumRepository.findAll());
+    map.addAttribute("genres", genreRepository.findAll());
+    map.addAttribute("artists", artistRepository.findAll());
+    map.addAttribute("newsis", newsRepository.findAll());
+    map.addAttribute("user", new User());
+    map.addAttribute("music", new Music());
+    map.addAttribute("album", new Album());
+    map.addAttribute("genre", new Genre());
+    map.addAttribute("artist", new Artist());
+    map.addAttribute("news", new News());
+    return "addMusic";
+}
 
-    @PostMapping(value = "/addMusic")
+    @PostMapping(value = "/saveMusic")
     public String saveMusic(@ModelAttribute("music") Music music, @RequestParam("musicImg") MultipartFile musicImg, @RequestParam("musicName") MultipartFile musicName) throws IOException {
         String picName = System.currentTimeMillis() + "_" + musicImg.getOriginalFilename();
         String musicPath = System.currentTimeMillis() + "_" + musicName.getOriginalFilename();
@@ -83,6 +166,27 @@ public class AdminController {
         music.setPicture(picName);
         music.setMusic(musicPath);
         musicRepository.save(music);
-        return "redirect:/admin";
+        return "redirect:/addMusic";
     }
+//    --END ADD MUSIC
+
+//    --ADD NEWS--
+@GetMapping("/addNews")
+public String addNewsPage(ModelMap map) {
+    CurrentUser principal = (CurrentUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    map.addAttribute("currentUser", principal);
+    map.addAttribute("newsis", newsRepository.findAll());
+    map.addAttribute("news", new News());
+    return "addNews";
+}
+    @PostMapping(value = "/saveNews")
+    public String saveNews(@ModelAttribute("news") News news, @RequestParam("newsImg") MultipartFile multipartFile) throws IOException {
+        String picName = System.currentTimeMillis() + "_" + multipartFile.getOriginalFilename();
+        File file = new File(imageUploadPath + picName);
+        multipartFile.transferTo(file);
+        news.setNewsImage(picName);
+        newsRepository.save(news);
+        return "redirect:/addNews";
+    }
+//    --END ADD NEWS--
 }

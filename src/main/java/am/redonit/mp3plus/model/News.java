@@ -11,8 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "artist")
-public class Artist {
+@Table(name = "news")
+public class News {
     @Id
     @GeneratedValue
     @Column
@@ -20,14 +20,9 @@ public class Artist {
     @Column
     private String name;
     @Column
-    private String surname;
+    private String description;
+    @Column(name = "news_image")
+    private String newsImage;
     @Column
-    private int age;
-    @Enumerated(EnumType.STRING)
-    @Column
-    private Gender gender;
-    @Column
-    private String country;
-    @Column
-    private String photo;
+    private String timestamp;
 }

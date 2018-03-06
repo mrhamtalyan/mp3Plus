@@ -8,7 +8,7 @@ public class UserController {
 
     @GetMapping(value = "/userPage")
     public String userPage(){
-        return "user";
+        return "redirect:/home";
     }
 
 }

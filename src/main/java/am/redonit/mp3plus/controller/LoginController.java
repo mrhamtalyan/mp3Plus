@@ -58,7 +58,7 @@ public class LoginController {
         if (principal.getUser().getUserType() == UserType.ADMIN) {
             return "redirect:/admin";
         }
-        return "redirect:/user";
+        return "redirect:/home";
     }
 }
 

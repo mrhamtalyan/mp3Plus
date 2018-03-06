@@ -38,8 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-
-;
+                .and()
+                .rememberMe().rememberMeParameter("rememberMe");
 
     }
 

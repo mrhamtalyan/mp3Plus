@@ -1,7 +1,7 @@
 package am.redonit.mp3plus.security;
 
-import am.redonit.mp3plus.model.User;
-import am.redonit.mp3plus.model.UserType;
+import com.worldmusic.worldmusic.model.User;
+import com.worldmusic.worldmusic.model.UserType;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 public class CurrentUser extends org.springframework.security.core.userdetails.User {
